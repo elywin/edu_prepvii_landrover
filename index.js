@@ -4,6 +4,7 @@ const port = process.env.PORT || 3000;
 const app = express();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const userRoutes = require('../edu_prepvii_landrover/server/routes/userRoute');
 
 
 const url = 'mongodb://localhost/api_db';
@@ -11,14 +12,10 @@ const url = 'mongodb://localhost/api_db';
 //connect mongodb to node app using connect method
 mongoose.connect(url,{useNewUrlParser:true,useUnifiedTopology: true });
 
-//store connection into variable db
-const db = mongoose.connection;
+const db = mongoose.connection;//store connection into variable db
+app.use(bodyParser.json());//convert to json
 
-
-const userRoutes = require('../edu_prepvii_landrover/server/routes/userRoute');
-
-app.use(bodyParser.json());
-
+//middleware
 app.use("/user", userRoutes);
 
 app.listen(port,()=>{

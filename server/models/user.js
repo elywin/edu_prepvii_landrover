@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
-//import user schema
+//import user model
 const UserSchema = require('../models/schema/schema');
 
 
-// module.exports = mongoose.model('User',UserSchema);
-
+// export user model
 module.exports = UserSchema;

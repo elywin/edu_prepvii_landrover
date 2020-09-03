@@ -1,12 +1,13 @@
-
 const mongoose = require("mongoose");
 const express = require("express");
 const router = express.Router();
 const bcrypt = require('bcrypt');
+const User = require("../models/user");//import user model
 
-const User = require("../models/user");
-
+//create user using post method
 router.post("/signup", (req, res, next) => {
+
+    //password ecnryption with bcrypt
     bcrypt.hash(req.body.password, 10, (err,hash)=>{
         if(err){
             return res.status(500).json({
@@ -18,6 +19,7 @@ router.post("/signup", (req, res, next) => {
                 email:req.body.email,
                 password:hash
                 });
+                //save user created to database
                 user.save().then(result =>{
                     console.log(result);
                     res.status(201).json({
