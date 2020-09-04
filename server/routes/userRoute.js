@@ -6,9 +6,18 @@ const User = require("../models/user");//import user model
 
 //create user using post method
 router.post("/signup", (req, res, next) => {
-
-    //password ecnryption with bcrypt
-    bcrypt.hash(req.body.password, 10, (err,hash)=>{
+    //get the user from the user model
+    User.find({email:req.body.email})
+    .exec()
+    //get the user email check if it exists
+    .then(user =>{
+        if(user.length >= 1){
+            return res.status(409).json({
+                message:"email exists"
+            });
+        }else{
+              //password ecnryption with bcrypt
+          bcrypt.hash(req.body.password, 10, (err,hash)=>{
         if(err){
             return res.status(500).json({
                 error:err
@@ -35,6 +44,9 @@ router.post("/signup", (req, res, next) => {
         }
    
     });
+        }
+    });
+  
 });
 
 module.exports = router;
