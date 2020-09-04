@@ -7,10 +7,13 @@ const userRoutes = require('./server/routes/userRoute');
 const routes = require("./server/routes/postRoute");
 require('dotenv').config();
 
-//connect mongodb to node app using connect method
-mongoose.connect(process.env.dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+//database connection
+const url = "mongodb://localhost/api_db";
+mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
+const db = mongoose.connection;
 
-const db = mongoose.connection; //store connection into variable db
+//
+app.use(express.json());
 
 //veryfying connection
 db.once('open', _ => {

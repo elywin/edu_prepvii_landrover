@@ -1,8 +1,8 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 
 const schema = mongoose.Schema({
   title: String,
   content: String,
-})
+});
 
-module.exports = mongoose.model("post", schema)
+module.exports = mongoose.model("post", schema);
