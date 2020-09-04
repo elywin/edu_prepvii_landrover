@@ -25,4 +25,15 @@ router.get("/questions/:id", async (req, res) => {
     res.send(post)
   })
 
+//delete post/question
+  router.delete("/questions/:id", async (req, res) => {
+    try {
+      await Post.deleteOne({ _id: req.params.id })
+      res.status(204).send()
+    } catch {
+      res.status(404)
+      res.send({ error: "Post doesn't exist!" })
+    }
+  })
+
   module.exports = router
