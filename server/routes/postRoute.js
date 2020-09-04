@@ -1,9 +1,9 @@
 const express = require("express")
-const Post = require("../models/schema/posts") // new
+const Post = require("../models/schema/posts")
 const router = express.Router()
 
-
-router.post("/posts", async (req, res) => {
+//create question
+router.post("/questions", async (req, res) => {
     const post = new Post({
       title: req.body.title,
       content: req.body.content,

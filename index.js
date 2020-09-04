@@ -4,7 +4,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const userRoutes = require('./server/routes/userRoute');
-const routess = require('./server/routes/posts');
+const routes = require("./server/routes/postRoute");
 require('dotenv').config();
 
 //connect mongodb to node app using connect method
@@ -27,7 +27,7 @@ app.use(bodyParser.json()); //convert to json
 
 //middleware
 app.use("/auth", userRoutes);
-
+app.use("/posts", routes);
 
 app.listen(port, () => {
     console.log('Server is running...')
@@ -36,4 +36,7 @@ app.listen(port, () => {
 app.get('/', (req, res) => {
     res.send("Welcome to the EDU Landrover API")
 })
+
+
+
 
