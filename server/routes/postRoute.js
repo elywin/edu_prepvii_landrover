@@ -1,44 +1,17 @@
 const express = require("express");
-const Post = require("../models/schema/posts");
 const router = express.Router(); //register the routes
+const postControl = require('../controllers/posts');
 
 //create post/questions
-router.post("/questions", async (req, res) => {
-  const post = new Post({
-    title: req.body.title,
-    content: req.body.content,
-  });
-  await post.save();
-  res.send(post);
-});
+router.post("/questions",postControl.posts_post);
 
 //fetch all questions/posts then send to client
-router.get("/questions", async (req, res) => {
-  const posts = await Post.find();
-  res.send(posts);
-});
+router.get("/questions",postControl.posts_get);
 
 //fetch specific post/question
-router.get("/questions/:id", async (req, res) => {
-  const post = await Post.findOne({
-    _id: req.params.id,
-  });
-  res.send(post);
-});
+router.get("/questions/:id",postControl.posts_getOne); 
 
 //delete post/question
-router.delete("/questions/:id", async (req, res) => {
-  try {
-    await Post.deleteOne({
-      _id: req.params.id,
-    });
-    res.status(204).send();
-  } catch {
-    res.status(404);
-    res.send({
-      error: "Post doesn't exist!",
-    });
-  }
-});
+router.delete("/questions/:id",postControl.posts_del);
 
 module.exports = router;
