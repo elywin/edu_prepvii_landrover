@@ -9,6 +9,7 @@ module.exports.posts_post = async (req, res) => {
     const post = new Post({
       title: req.body.title,
       content: req.body.content,
+      user:req.body.user
     });
     await post.save();
     res.send(post);
