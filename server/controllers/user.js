@@ -1,7 +1,6 @@
 const User = require("../models/schema/schema");
 const bcrypt = require('bcrypt');
-const mongoose = require("mongoose");
-const express = require("express");
+
 
 //create user using post method
 module.exports.signup_post= (req, res, next) => {
@@ -31,13 +30,13 @@ module.exports.signup_post= (req, res, next) => {
                         });
                         //save user created to database
                         user.save().then(result => {
-                            console.log(result);
+                           // console.log(result);
                             res.status(201).json({
                                 message: 'user created successfully'
                             });
 
                         }).catch(err => {
-                            console.log(err);
+                           // console.log(err);
                             res.status(500).json({
                                 error: err
                             });
@@ -49,3 +48,9 @@ module.exports.signup_post= (req, res, next) => {
         });
 
 };
+
+
+module.exports.signup_usr =  async (req, res) => {
+    const user = await User.find();
+    res.send(user);
+  };
