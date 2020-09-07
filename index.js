@@ -39,4 +39,3 @@ app.get('/', (req, res) => {
     res.send("Welcome to the EDU Landrover API")
 })
 
-
