@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const postSchema = require('../schema/posts').Schema;
 //create user schema
 const userSchema = new mongoose.Schema({
     email: {
@@ -11,8 +12,9 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    posts:[{type:mongoose.Schema.Types.ObjectId,ref:'post'}]
-
+    post:{type:mongoose.Schema.Types.ObjectId,
+        ref:'post'}  
+    
 });
 
 //export user model
