@@ -8,9 +8,9 @@ router.post('/signup',controlRoute.signup_post);
 router.get('/signup',controlRoute.signup_usr);
 
 // Getting the login page
-router.get('/login', authController.login_get)
+router.get('/auth/login', authController.login_get)
 
 //Sending the login information for verification
-router.post('/login', authController.login_post)
+router.post('/auth/login', authController.login_post)
 
 module.exports = router;
