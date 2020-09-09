@@ -14,6 +14,16 @@ mongoose.connect(url, {
 });
 
 const db = mongoose.connection; //store connection into variable db
+
+//veryfying connection
+db.once('open',_=>{
+    console.log('databse connected:', url);
+});
+
+db.on('error',(err)=>{
+    console.error('connection failed:',err);
+});
+
 app.use(bodyParser.json()); //convert to json
 // app.use(express.json());
 

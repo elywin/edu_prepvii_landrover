@@ -20,7 +20,8 @@ module.exports.signup_post= (req, res, next) => {
                 bcrypt.hash(req.body.password, 10, (err, hash) => {
                     if (err) {
                         return res.status(500).json({
-                            error: err
+                            //error: err
+                            message:"password is required"
                         });
 
                     } else {

@@ -8,6 +8,8 @@ module.exports.posts_post = async (req, res) => {
       content: req.body.content,
       // user:req.params.id
 
+
+
       // postsByUser : async (req, res) => {
       //   const { id } = req.params;
       //   const user = await User.findById(id).populate('post');
@@ -17,7 +19,6 @@ module.exports.posts_post = async (req, res) => {
     await post.save();
     res.send(post);
 
-   
   };
 
 //fetch all questions/posts then send to client
