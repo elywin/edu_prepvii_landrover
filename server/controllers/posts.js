@@ -8,11 +8,11 @@ module.exports.posts_post = async (req, res) => {
       content: req.body.content,
       // user:req.params.id
 
-      postsByUser : async (req, res) => {
-        const { id } = req.params;
-        const user = await User.findById(id).populate('post');
+      // postsByUser : async (req, res) => {
+      //   const { id } = req.params;
+      //   const user = await User.findById(id).populate('post');
   
-      }
+      // }
     });
     await post.save();
     res.send(post);

@@ -19,7 +19,7 @@ app.use(bodyParser.json()); //convert to json
 
 
 //middleware
-app.use("/user", userRoutes);
+app.use("/auth", userRoutes);
 app.use("/post", routess);
 app.use('/questions',answers);
 

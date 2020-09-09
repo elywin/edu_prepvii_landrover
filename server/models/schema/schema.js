@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema({
         required: true,
     },
     post:{type:mongoose.Schema.Types.ObjectId,
-        ref:'post'}  
+ref:'post'}  
     
 });
 
