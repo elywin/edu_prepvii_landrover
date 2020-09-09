@@ -7,8 +7,6 @@ const userRoutes = require('./server/routes/userRoute');
 const routess = require('./server/routes/posts');
 require('dotenv').config();
 
-const port = process.env.PORT || 3000;
-
 //connect mongodb to node app using connect method
 mongoose.connect(process.env.dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
 
@@ -16,7 +14,7 @@ const db = mongoose.connection; //store connection into variable db
 
 //veryfying connection
 db.once('open', _ => {
-    console.log('databse connected:', url);
+    console.log('databse connected:', process.env.dbURI);
 });
 
 db.on('error', (err) => {
