@@ -4,6 +4,8 @@ POST /auth/signup create user
 POST post/questions post question
 POST questions/<questionId>/answer post an answer to a question
 
+GET /auth/login 
+POST /auth/login
 
 GET post/questions  fetch all questions
 GET questions/answers fetch all answers
