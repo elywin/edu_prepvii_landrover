@@ -6,7 +6,6 @@ const mongoose = require("mongoose");
 const userRoutes = require('../edu_prepvii_landrover/server/routes/userRoute');
 const routess = require('../edu_prepvii_landrover/server/routes/posts');
 const url = 'mongodb://localhost/api_db';
-const answers =require('../edu_prepvii_landrover/server/routes/answer');
 //connect mongodb to node app using connect method
 mongoose.connect(url, {
     useNewUrlParser: true,
@@ -30,8 +29,7 @@ app.use(bodyParser.json()); //convert to json
 
 //middleware
 app.use("/auth", userRoutes);
-app.use("/post", routess);
-app.use('/questions',answers);
+
 
 app.listen(port, () => {
     console.log('Server is running...')
