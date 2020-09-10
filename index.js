@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const express = require('express');
 const port = process.env.PORT || 3000;
 const app = express();
@@ -12,23 +11,11 @@ require('dotenv').config();
 //database connection
 // const url = "mongodb://localhost/api_db";
 mongoose.connect(process.env.dbURI, { useNewUrlParser: true, useUnifiedTopology: true });
-=======
-const express = require("express");
-const mongoose = require("mongoose");
-const routes = require("../edu_prepvii_landrover/server/routes/postRoute");
-const app = express();
-const port = process.env.PORT || 3000;
-
-//database connection
-const url = "mongodb://localhost/api_db";
-mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
->>>>>>> bad3cbed0c286f7e2d767afff396d63b0eaf1aea
 const db = mongoose.connection;
 
 //
 app.use(express.json());
 
-<<<<<<< HEAD
 //veryfying connection
 db.once('open', _ => {
     console.log('databse connected:', process.env.dbURI);
@@ -59,11 +46,3 @@ app.get('/', (req, res) => {
 
 
 
-=======
-//posts middleware
-app.use("/posts", routes);
-
-app.listen(port, () => {
-  console.log(`server is listening on http://localhost:${port}`);
-});
->>>>>>> bad3cbed0c286f7e2d767afff396d63b0eaf1aea
