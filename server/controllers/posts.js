@@ -4,9 +4,10 @@ const Post = require("../models/schema/posts");
 //create post/questions
 module.exports.posts_post = async (req, res) => {
     const post = new Post({
-      // user: req.user.id,
+    
       title: req.body.title,
       content: req.body.content,
+      user: req.params.id,
       // user:req.params.id
     });
     await post.save();

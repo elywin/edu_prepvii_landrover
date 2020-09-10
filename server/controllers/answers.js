@@ -24,7 +24,7 @@ const Question = require("../models/schema/posts");
 
   // Post an answer to a question
 module.exports.post_ans = async (req, res) => {
-  let question_id = req.params.question_id;
+  let question_id = req.params.id;
   console.log(question_id);
   
   let newAnswer = new ans(
@@ -44,11 +44,11 @@ module.exports.post_ans = async (req, res) => {
       { 
         _id: question_id
       },
-      { $push: { "answers.0": newAnswer }},
+      { $push: { "answer.0": newAnswer }},
       { new: true}
-    ).then( _=> {
-      //console.log(question);
-      res.status(200).json(newAnswer);
+    ).then( question=> {
+      console.log(question);
+      res.status(200).json(question);
       
     }).catch(err => {
       console.log(`**ERROR** find and update question : ${err}`)

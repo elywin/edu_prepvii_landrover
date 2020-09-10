@@ -12,6 +12,9 @@ const postSchema = mongoose.Schema({
 //   answer:[{type:mongoose.Schema.Types.ObjectId,
 //   ref:'Answer'
 // }]
+user:{type:mongoose.Schema.Types.ObjectId,
+  ref:'User'
+  },
 
 answer:[
   {
@@ -22,9 +25,7 @@ answer:[
   }
 ]
   ,
-  user:{type:mongoose.Schema.Types.ObjectId,
-    ref:'User'
-    },
+ 
 });
 
 module.exports = mongoose.model("post", postSchema);
