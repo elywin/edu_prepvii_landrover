@@ -4,7 +4,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const userRoutes = require('./server/routes/userRoute');
-const routes = require("./server/routes/postRoute");
+const questionRoutes = require("./server/routes/postRoute");
 const answers = require('./server/routes/answer');
 require('dotenv').config();
 
@@ -31,7 +31,7 @@ app.use(bodyParser.json()); //convert to json
 
 //middleware
 app.use("/auth", userRoutes);
-app.use("/posts", routes);
+app.use("/", questionRoutes);
 app.use('/questions',answers);
 
 

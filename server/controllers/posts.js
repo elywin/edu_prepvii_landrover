@@ -11,14 +11,14 @@ module.exports.posts_post = async (req, res) => {
       // user:req.params.id
     });
     await post.save();
-    res.send(post);
+    res.json({post:post});
 
   };
 
 //fetch all questions/posts then send to client
   module.exports.posts_get =  async (req, res) => {
     const posts = await Post.find();
-    res.send(posts);
+    res.json({posts:posts});
   };
 
 //fetch specific post/question
@@ -26,7 +26,7 @@ module.exports.posts_post = async (req, res) => {
     const post = await Post.findOne({
       _id: req.params.id,
     });
-    res.send(post);
+    res.json({post:post});
   };
   
 
@@ -39,7 +39,7 @@ module.exports.posts_post = async (req, res) => {
       res.status(204).send();
     } catch {
       res.status(404);
-      res.send({
+      res.json({
         error: "Post doesn't exist!",
       });
     }

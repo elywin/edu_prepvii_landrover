@@ -1,26 +1,24 @@
 const ans = require("../models/schema/answers");
 const Question = require("../models/schema/posts");
 
-// module.exports.post_ans = async (req, res) => {
-//     const post = new ans({
-//         answer:req.body.answer,
-//       // user:req.params.id
-//     });
-//     await post.save();
-//     res.send(post);
-
-
-//   };
-
   module.exports.ans_get =  async (req, res) => {
-    const answer = await ans.find();
-    res.send(answer);
+    try {
+    
+      const answer = await Question.findOne({
+        _id: req.params.id
+        
+      },
+      "answer"
+
+      );
+      res.json({answer:answer});
+    } catch (error) {
+     // console.log(error);
+     res.json({message:"No Answers found!!"}).status(404);
+    }
+   
   };
 
-
-  // Fetch Question Model
-// const Question = require('../model/questionModel').Question
-// const Answer = require('../model/questionModel').Answer
 
   // Post an answer to a question
 module.exports.post_ans = async (req, res) => {
@@ -29,9 +27,7 @@ module.exports.post_ans = async (req, res) => {
   
   let newAnswer = new ans(
     {
-      // user: req.user.id,
-      // text: req.body.text,
-      // name: req.user.name,
+     
       answer:req.body.answer,
       user:req.params.id,
     //  post:req.post.id
