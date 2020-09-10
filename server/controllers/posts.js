@@ -1,18 +1,17 @@
-const express = require("express");
 const Post = require("../models/schema/posts");
-const router = express.Router(); //register the routes
-const postControl = require('../controllers/posts');
-const { model } = require("../models/schema/posts");
+
 
 //create post/questions
 module.exports.posts_post = async (req, res) => {
     const post = new Post({
+      // user: req.user.id,
       title: req.body.title,
       content: req.body.content,
-      user:req.body.user
+      // user:req.params.id
     });
     await post.save();
     res.send(post);
+
   };
 
 //fetch all questions/posts then send to client
@@ -28,6 +27,7 @@ module.exports.posts_post = async (req, res) => {
     });
     res.send(post);
   };
+  
 
 //delete post/question
   module.exports.posts_del = async (req, res) => {

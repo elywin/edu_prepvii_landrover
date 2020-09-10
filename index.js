@@ -5,11 +5,12 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const userRoutes = require('./server/routes/userRoute');
 const routes = require("./server/routes/postRoute");
+const answers = require('./server/routes/answer');
 require('dotenv').config();
 
 //database connection
-const url = "mongodb://localhost/api_db";
-mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
+// const url = "mongodb://localhost/api_db";
+mongoose.connect(process.env.dbURI, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 
 //
@@ -31,6 +32,8 @@ app.use(bodyParser.json()); //convert to json
 //middleware
 app.use("/auth", userRoutes);
 app.use("/posts", routes);
+app.use('/questions',answers);
+
 
 app.listen(port, () => {
     console.log('Server is running...')
