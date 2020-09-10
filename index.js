@@ -4,13 +4,17 @@ const app = express();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const userRoutes = require('./server/routes/userRoute');
-const routess = require('./server/routes/posts');
+const questionRoutes = require("./server/routes/postRoute");
+const answers = require('./server/routes/answer');
 require('dotenv').config();
 
-//connect mongodb to node app using connect method
-mongoose.connect(process.env.dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+//database connection
+// const url = "mongodb://localhost/api_db";
+mongoose.connect(process.env.dbURI, { useNewUrlParser: true, useUnifiedTopology: true });
+const db = mongoose.connection;
 
-const db = mongoose.connection; //store connection into variable db
+//
+app.use(express.json());
 
 //veryfying connection
 db.once('open', _ => {
@@ -27,6 +31,8 @@ app.use(bodyParser.json()); //convert to json
 
 //middleware
 app.use("/auth", userRoutes);
+app.use("/", questionRoutes);
+app.use('/questions',answers);
 
 
 app.listen(port, () => {
@@ -36,4 +42,7 @@ app.listen(port, () => {
 app.get('/', (req, res) => {
     res.send("Welcome to the EDU Landrover API")
 })
+
+
+
 

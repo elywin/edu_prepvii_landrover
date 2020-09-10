@@ -55,7 +55,7 @@ module.exports.signup_post= (req, res, next) => {
 
 module.exports.signup_usr =  async (req, res) => {
     const user = await User.find();
-    res.send(user);
+    res.json({user:user});
   };
 
   const maxAge = 3*24*60*60;
@@ -85,7 +85,7 @@ const handleErrors = (err) =>{
 
 // user requests for login page
 module.exports.login_get = (req,res) => {
-    res.send('login page');
+    res.json({message:'login page'});
 }
 
 //Validation and authentication
@@ -95,7 +95,7 @@ module.exports.login_post = async function (req,res) {
         const user = await validation.auth(email, password);
         const token = createToken(user._id);
         res.cookie('jwt',token, {httpOnly:true, maxAge: maxAge * 1000})
-        res.status(200).json("Login successful")
+        res.status(200).json({message:"Login successful"})
     } catch (err) {
         const error = handleErrors(err);
         res.status(400).json({error})
