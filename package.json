@@ -20,10 +20,12 @@
   "homepage": "https://github.com/outboxafrica/edu_prepvii_landrover#readme",
   "dependencies": {
     "bcrypt": "^5.0.0",
-    "express": "^4.17.1",
     "dotenv": "^8.2.0",
+    "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.10.2"
+    "mongoose": "^5.10.2",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
