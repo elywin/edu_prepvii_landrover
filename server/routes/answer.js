@@ -9,5 +9,8 @@ router.post("/:id/answers",passport.authenticate('jwt',{session:false}),ans.post
 //view answers
 router.get('/:id/answers',ans.ans_get);
 
+//accepted answer
+router.post("/:question_id/answers/:answer_id",ans.acceptAnswer);
+
 module.exports = router;
 

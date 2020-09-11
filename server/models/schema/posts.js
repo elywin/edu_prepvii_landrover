@@ -25,6 +25,12 @@ answer:[
   }
 ]
   ,
+  acceptedAnswer: {
+    id: {
+      type:mongoose.Schema.Types.ObjectId,
+      ref: 'Answer'
+    }
+  }
  
 });
 

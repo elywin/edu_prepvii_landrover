@@ -12,7 +12,7 @@ require("./server/helpers/routeProtect")(passport)
 
 //database connection
 // const url = "mongodb://localhost/api_db";
-mongoose.connect(process.env.dbURI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.dbURI, { useNewUrlParser: true, useUnifiedTopology: true,useFindAndModify: false  });
 const db = mongoose.connection;
 
 //

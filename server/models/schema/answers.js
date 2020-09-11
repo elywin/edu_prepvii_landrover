@@ -9,14 +9,7 @@ const answerSchema = mongoose.Schema({
  user:{type:mongoose.Schema.Types.ObjectId,
     ref:'User'
     } ,
-  post:{type:mongoose.Schema.Types.ObjectId,
-ref:'post'} ,
-// upVote: {
-//   type: Number,
-// },
-// downVote: {
-//   type: Number,
-// },
+   
 });
 
 module.exports = mongoose.model("Answer", answerSchema);
