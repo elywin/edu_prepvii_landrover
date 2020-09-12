@@ -21,7 +21,6 @@ module.exports.signup_post = (req, res, next) => {
         bcrypt.hash(req.body.password, 10, (err, hash) => {
           if (err) {
             return res.status(500).json({
-              //error: err
               message: "password is required",
             });
           } else {
@@ -33,13 +32,11 @@ module.exports.signup_post = (req, res, next) => {
             user
               .save()
               .then((result) => {
-                // console.log(result);
                 res.status(201).json({
                   message: "user created successfully",
                 });
               })
               .catch((err) => {
-                // console.log(err);
                 res.status(500).json({
                   error: err,
                 });

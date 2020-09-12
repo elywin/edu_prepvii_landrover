@@ -13,7 +13,7 @@ module.exports.ans_get = async (req, res) => {
       answer: answer,
     });
   } catch (error) {
-    // console.log(error);
+  
     res
       .json({
         message: "No Answers found!!",
@@ -50,12 +50,11 @@ module.exports.post_ans = async (req, res) => {
 // Post an answer to a question
 module.exports.post_ans = async (req, res) => {
   let question_id = req.params.id;
-  // console.log(question_id);
+
 
   let newAnswer = new ans({
     answer: req.body.answer,
     user: req.params.id,
-    //  post:req.post.id
   });
 
   newAnswer.save((err) => {
@@ -113,11 +112,10 @@ module.exports.post_ans = async (req, res) => {
       }
     )
       .then((question) => {
-        //console.log(question);
+    
         res.status(200).json(question);
       })
       .catch((err) => {
-        // console.log(`**ERROR** find and update question : ${err}`)
         res.status(500).json({
           failedToUpdate: "Failed to save the answer!",
         });
@@ -131,22 +129,16 @@ module.exports.acceptAnswer = async (req, res) => {
   const question_id = req.params.question_id;
   const answer_id = req.params.answer_id;
 
-  // console.log(question_id)
-  // console.log(answer_id)
-
   Question.findOne({
     _id: question_id,
-    //acceptedAnswer: req.params.id
     //user: req.user.id,
   }).then((question) => {
-    //console.log(question)
 
     ans
       .find({
         _id: answer_id,
       })
       .then((answer) => {
-        // console.log(answer);
 
         question.save((err) => {
           if (err) return console.log(`**ERROR** saving answer: ${err}`);
@@ -164,11 +156,9 @@ module.exports.acceptAnswer = async (req, res) => {
             }
           )
             .then((question) => {
-              //console.log(question);
               res.status(200).json(question);
             })
             .catch((err) => {
-              // console.log(`**ERROR** find and update question : ${err}`)
               res.status(500).json({
                 failedToUpdate: "Failed to save the answer!",
               });
@@ -177,7 +167,6 @@ module.exports.acceptAnswer = async (req, res) => {
       })
       .catch((err) => {
         if (err) {
-          //console.log(`**ERROR** >> ${err}`)
           res.status(500).json({
             message: "question does not exist",
           });
