@@ -112,3 +112,4 @@ User can edit an answer or select an answer as the preferred answer.
 - Kalemba Ivan
 - Lukeera Elywin Michael
 - Kamoti Godfrey
+- Edna Nakajugo (LF)
