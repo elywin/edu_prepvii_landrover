@@ -155,7 +155,9 @@ module.exports.acceptAnswer = async (req, res) => {
               _id: question_id,
             },
             {
-              acceptedAnswer: answer_id,
+              
+                acceptedAnswer:{ id:answer_id},
+              
             },
             {
               new: true,
