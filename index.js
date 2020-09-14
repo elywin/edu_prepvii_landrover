@@ -7,6 +7,8 @@ const userRoutes = require('./server/routes/userRoute');
 const questionRoutes = require("./server/routes/postRoute");
 const answers = require('./server/routes/answer');
 require('dotenv').config();
+const passport = require('passport')
+require("./server/helpers/routeProtect")(passport)
 
 //database connection
 // const url = "mongodb://localhost/api_db";
