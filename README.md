@@ -65,7 +65,7 @@ Adds a question to the database.
 
 |**Endpoint**|**Method**|**Params**|**Data-type**|
 |---|---|---|---|
-|`/questions`|POST|`None`|string
+|`/questions/<userid>`|POST|`None`|string
 
 ## Give a response
 

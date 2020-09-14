@@ -1,16 +1,78 @@
 const Post = require("../models/schema/posts");
+const User = require("../models/schema/user");
 
-//create post/questions
+//create/post question
 module.exports.posts_post = async (req, res) => {
-  const post = new Post({
+  let user_id = req.params.user_id;
+
+
+  let newPost = new Post({
     title: req.body.title,
     content: req.body.content,
-    user: req.params.id,
-    // user:req.params.id
+  
   });
-  await post.save();
-  res.json({ post: post });
+
+  await newPost.save((err) => {
+    if (err) return console.log(`**ERROR** saving answer: ${err}`);
+  User.findOneAndUpdate(
+      {
+        _id: user_id,
+      },
+      {
+        $push: {
+          "post.0": newPost,
+        },
+      },
+      {
+        new: true,
+      }
+    )
+      .then((usr) => {
+        res.status(200).json(usr);
+      })
+      .catch((err) => {
+        res.status(500).json({
+          failedToUpdate: "Failed to create user!",
+        });
+      });
+  });
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //fetch all questions/posts then send to client
 module.exports.posts_get = async (req, res) => {
