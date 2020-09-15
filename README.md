@@ -1,6 +1,6 @@
 # EDU STACKOVERFLOW
 
-A place where users can ask questions and provide responses.
+> A place where users can ask questions and provide responses.
 
 ## Tech Stack <br>
 - Node.js
@@ -45,23 +45,23 @@ A place where users can ask questions and provide responses.
 
 ## SignUp User
 
-Signs in a single user into the Application.
+> Signs in a single user into the Application.
 
 |**Endpoint**|**Method**|**Params**|**Data-type**|
 |---|---|---|---|
-|/auth/signup|POST|None|None|
+|`/auth/signup`|POST|`None`|None|
 
 ## Login User
 
-Logs in a single user in the application.
+> Logs in a single user in the application.
 
 |**Endpoint**|**Method**|**Params**|**Data-type**|
 |---|---|---|---|
-|/auth/login|POST|None|None|
+|`/auth/login`|POST|`None`|None|
     
 ## Ask a question
 
-Adds a question to the database.
+> Adds a question to the database.
 
 |**Endpoint**|**Method**|**Params**|**Data-type**|
 |---|---|---|---|
@@ -69,7 +69,7 @@ Adds a question to the database.
 
 ## Give a response
 
-Adds an answer to a question in the database.
+> Adds an answer to a question in the database.
 
 |**Endpoint**|**Method**|**Params**|**Data-type**|
 |---|---|---|---|
@@ -77,7 +77,7 @@ Adds an answer to a question in the database.
 
 ## Get all questions
 
-Gets all questions from the database.
+> Gets all questions from the database.
 
 **Endpoint**|**Method**|**Params**|**Data-type**
 ---|---|---|---
@@ -85,7 +85,7 @@ Gets all questions from the database.
 
 ## Get all answers to a question
 
-Gets all answers to a question in the database.
+> Gets all answers to a question in the database.
 
 **Endpoint**|**Method**|**Params**|**Data-type**
 ---|---|---|---
@@ -93,7 +93,7 @@ Gets all answers to a question in the database.
 
 ## Delete a question
 
-Deletes a single question from the database.
+> Deletes a single question from the database.
 
 **Endpoint**|**Method**|**Params**|**Data-type**
 ---|---|---|---
@@ -101,11 +101,19 @@ Deletes a single question from the database.
 
 ## Update an answer or mark an answer as accepted
 
-User can edit an answer or select an answer as the preferred answer.
+> User can edit an answer or select an answer as the preferred answer.
 
 **Endpoint**|**Method**|**Params**|**Data-type**
 ---|---|---|---
 `/questions/<questionId>/answers/<answerId>`|PUT|`required`|string
+
+## Search for a question
+
+> User can search for a question.
+
+|**Endpoint**|**Method**|**Params**|**Data-type**|
+|---|---|---|---|
+|`/search`|POST|`None`|string|
 
 ## Contributors
 
