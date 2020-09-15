@@ -19,10 +19,11 @@ const postSchema = mongoose.Schema({
   ],
   acceptedAnswer: {
     id: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Answer",
-    },
-  },
+      type:mongoose.Schema.Types.ObjectId,
+      ref: 'Answer'
+    }
+  }
+ 
 });
 
 postSchema.index({title:'text',content:'text'});

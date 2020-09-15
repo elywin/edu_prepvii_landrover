@@ -19,9 +19,6 @@ mongoose.connect(process.env.dbURI, {
 });
 const db = mongoose.connection;
 
-//
-app.use(express.json());
-
 //veryfying connection
 db.once("open", (_) => {
   console.log("databse connected:", process.env.dbURI);
@@ -32,7 +29,6 @@ db.on("error", (err) => {
 });
 
 app.use(bodyParser.json()); //convert to json
-// app.use(express.json());
 
 //middleware
 app.use("/auth", userRoutes);

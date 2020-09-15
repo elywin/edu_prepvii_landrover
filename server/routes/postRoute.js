@@ -16,6 +16,6 @@ router.get("/questions/:id", postControl.posts_getOne);
 //delete post/question
 router.delete("/questions/:id",passport.authenticate('jwt',{session:false}),postControl.posts_del);
 
-router.post("/search",searchControl.search);
+router.get("/search",searchControl.search);
 
 module.exports = router;
