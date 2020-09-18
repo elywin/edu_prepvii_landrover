@@ -38,42 +38,6 @@ module.exports.posts_post = async (req, res) => {
   });
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //fetch all questions/posts then send to client
 module.exports.posts_get = async (req, res) => {
   const posts = await Post.find();
@@ -82,10 +46,20 @@ module.exports.posts_get = async (req, res) => {
 
 //fetch specific post/question
 module.exports.posts_getOne = async (req, res) => {
-  const post = await Post.findOne({
-    _id: req.params.id,
-  });
-  res.json({ post: post });
+  try {
+    const post = await Post.findOne({
+      _id: req.params.id,
+    });
+    if (post) {
+      res.json({ post: post });
+    } else {
+      res.json({ message: "Question does not exist!!" });
+    }
+   
+  } catch (error) {
+    res.status(401).json({error:"Invalid entry!!!"})
+  }
+  
 };
 
 //delete post/question
