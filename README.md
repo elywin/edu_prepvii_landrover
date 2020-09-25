@@ -65,7 +65,7 @@ Adds a question to the database.
 
 |**Endpoint**|**Method**|**Params**|**Data-type**|
 |---|---|---|---|
-|`/questions`|POST|`None`|string
+|`/questions/<userid>`|POST|`None`|string
 
 ## Give a response
 
@@ -112,3 +112,4 @@ User can edit an answer or select an answer as the preferred answer.
 - Kalemba Ivan
 - Lukeera Elywin Michael
 - Kamoti Godfrey
+- Edna Nakajugo (LF)
