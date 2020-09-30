@@ -113,7 +113,7 @@
 
 |**Endpoint**|**Method**|**Params**|**Data-type**|
 |---|---|---|---|
-|`/search`|POST|`None`|string|
+|`/search`|GET|`required`|string|
 
 ## Contributors
 

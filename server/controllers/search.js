@@ -2,7 +2,7 @@ const Posts = require("../models/schema/posts");
 
 module.exports.search = async (req, res) => {
     await Posts.createIndexes();
-    const search_term = req.body.search;
+    const { search_term } = req.query;
     const results = await Posts.find({$text: {$search: search_term}},
         {score: {$meta: "textScore"}}
         ).sort({score: {$meta: "textScore"}});
