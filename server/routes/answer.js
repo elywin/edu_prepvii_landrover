@@ -10,6 +10,6 @@ router.post("/:id/answers",passport.authenticate('jwt',{session:false}),ans.post
 router.get("/:id/answers", ans.ans_get);
 
 //accepted answer
-router.put("/:question_id/answers/:answer_id", ans.acceptAnswer);
+router.put("/:question_id/answers/:answer_id", passport.authenticate('jwt',{session:false}), ans.acceptAnswer);
 
 module.exports = router;
