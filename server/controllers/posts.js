@@ -1,7 +1,7 @@
 const Post = require("../models/schema/posts");
 const User = require("../models/schema/user");
 
-//create/post question
+//create post/ question
 module.exports.posts_post = async (req, res) => {
   let user_id = req.params.user_id;
 
@@ -26,15 +26,18 @@ module.exports.posts_post = async (req, res) => {
       {
         new: true,
       }
+     
     )
-      .then((usr) => {
-        res.status(200).json(usr);
-      })
-      .catch((err) => {
+    
+      try{
+        res.status(200).json(newPost);
+    
+      }
+      catch(err){
         res.status(500).json({
-          failedToUpdate: "Failed to create user!",
+          failedToUpdate: "Failed to create post!",
         });
-      });
+      };
   });
 };
 
