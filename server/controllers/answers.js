@@ -3,9 +3,9 @@ const Question = require("../models/schema/posts");
 
 module.exports.ans_get = async (req, res) => {
   try {
-    const answer = await Question.findOne(
+    const answer = await ans.find(
       {
-        _id: req.params.id,
+        user: req.params.id,
       },
       "answer"
     );
