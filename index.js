@@ -3,6 +3,7 @@ const port = process.env.PORT || 3000;
 const app = express();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const cors = require('cors');
 const userRoutes = require("./server/routes/userRoute");
 const questionRoutes = require("./server/routes/postRoute");
 const answers = require('./server/routes/answer');
@@ -31,6 +32,7 @@ db.on("error", (err) => {
 app.use(bodyParser.json()); //convert to json
 
 //middleware
+app.use(cors());
 app.use("/auth", userRoutes);
 app.use("/", questionRoutes);
 app.use("/questions", answers);
