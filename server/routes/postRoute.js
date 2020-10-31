@@ -5,7 +5,7 @@ const passport = require('passport');
 const searchControl = require('../controllers/search');
 
 //create post/questions
-router.post("/questions/:user_id",passport.authenticate('jwt',{session:false}), postControl.posts_post);
+router.post("/user/:user_id/questions",passport.authenticate('jwt',{session:false}), postControl.posts_post);
 
 //fetch all questions/posts then send to client
 router.get("/questions", postControl.posts_get);
