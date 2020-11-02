@@ -9,6 +9,7 @@ module.exports.posts_post = async (req, res) => {
   let newPost = new Post({
     title: req.body.title,
     content: req.body.content,
+    user: req.params.user_id
   
   });
 
